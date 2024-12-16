@@ -74,8 +74,15 @@ being added. It will start at 1 and double every iteration (with our update rule
 On the first iteration, ```s = 1```, threads with indices ```idx``` = 0, 2, 4, ... add elements
 elements that are 1 position appart, since ```idx % (2 * 1) == 0```; in the second iteration
 only local thread indices ```idx = 0, 4, 8, ...``` since for them ```idx % (2 * 2) == 0``` and so on. 
+After the right additions have taken place, we sync the threads. 
+
+Once the loop finishes, we bring the result to global memory, by just reading from the
+first index of the shared mem array.
 
 
+## Comments
+These notes are quite scrappy, I will transcribe them to latex and complete them a bit more
+formally and better explained.
 
 ## References
 
